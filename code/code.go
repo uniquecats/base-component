@@ -3,68 +3,55 @@ package code
 import "fmt"
 
 type Code struct {
-	level  int
-	system int
-	module int
-	code   int
+	service   int
+	module    int
+	bussiness int
 }
 
 var (
-	UnknownCode = Code{level: 0, system: 0, module: 0, code: 0}
+	UnknownCode = Code{service: 0, module: 0, bussiness: 0}
 )
 
 func (c *Code) Code() string {
-	return fmt.Sprintf("%d-%d-%d-%d", c.level, c.system, c.module, c.code)
+	return fmt.Sprintf("%d-%d-%d", c.service, c.module, c.bussiness)
 }
 
 func New() *Code { return &Code{} }
 
-func (c *Code) SetLevel(level int) *Code {
-	return &Code{
-		level:  level,
-		system: c.system,
-		module: c.module,
-		code:   c.code,
-	}
-}
-
 func (c *Code) SetModule(module int) *Code {
 	if module == 0 {
-		panic("moudule number `0` is reserved.")
+		panic("module number `0` is reserved.")
 	}
 
 	return &Code{
-		level:  c.level,
-		system: c.system,
-		module: module,
-		code:   c.code,
+		service:   c.service,
+		module:    module,
+		bussiness: c.bussiness,
 	}
 }
 
-func (c *Code) SetCode(code int) *Code {
+func (c *Code) SetBussiness(code int) *Code {
 	if code == 0 {
 		panic("code number `0` is reserved.")
 	}
 
 	return &Code{
-		level:  c.level,
-		system: c.system,
-		module: c.module,
-		code:   code,
+		service:   c.service,
+		module:    c.module,
+		bussiness: code,
 	}
 }
 
-func (c *Code) SetSystem(system int) *Code {
+func (c *Code) SetService(system int) *Code {
 	if system == 0 {
 		panic("system number `0` is reserved.")
 	}
 
 	return &Code{
-		level:  c.level,
-		system: system,
-		module: c.module,
-		code:   c.code,
+		service:   system,
+		module:    c.module,
+		bussiness: c.bussiness,
 	}
 }
 
-func (c *Code) Reserved() bool { return c.system == 0 || c.module == 0 || c.code == 0 }
+func (c *Code) Reserved() bool { return c.service == 0 || c.module == 0 || c.bussiness == 0 }
