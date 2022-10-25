@@ -19,39 +19,52 @@ func (c *Code) Code() string {
 
 func New() *Code { return &Code{} }
 
-func (c *Code) SetLevel(level int) { c.level = level }
-
-func (c *Code) SetModule(module int) {
-	if module == 0 {
-		panic("moudule number `0` is reserved.")
-	}
-
-	c.module = module
-}
-
-func (c *Code) SetCode(code int) {
-	if code == 0 {
-		panic("code number `0` is reserved.")
-	}
-
-	c.code = code
-}
-
-func (c *Code) SetSystem(system int) {
-	if system == 0 {
-		panic("system number `0` is reserved.")
-	}
-
-	c.system = system
-}
-
-func (c *Code) Reserved() bool { return c.system == 0 || c.module == 0 || c.code == 0 }
-
-func (c *Code) Copy() *Code {
+func (c *Code) SetLevel(level int) *Code {
 	return &Code{
-		level:  c.level,
+		level:  level,
 		system: c.system,
 		module: c.module,
 		code:   c.code,
 	}
 }
+
+func (c *Code) SetModule(module int) *Code {
+	if module == 0 {
+		panic("moudule number `0` is reserved.")
+	}
+
+	return &Code{
+		level:  c.level,
+		system: c.system,
+		module: module,
+		code:   c.code,
+	}
+}
+
+func (c *Code) SetCode(code int) *Code {
+	if code == 0 {
+		panic("code number `0` is reserved.")
+	}
+
+	return &Code{
+		level:  c.level,
+		system: c.system,
+		module: c.module,
+		code:   code,
+	}
+}
+
+func (c *Code) SetSystem(system int) *Code {
+	if system == 0 {
+		panic("system number `0` is reserved.")
+	}
+
+	return &Code{
+		level:  c.level,
+		system: system,
+		module: c.module,
+		code:   c.code,
+	}
+}
+
+func (c *Code) Reserved() bool { return c.system == 0 || c.module == 0 || c.code == 0 }
