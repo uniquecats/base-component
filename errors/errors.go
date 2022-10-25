@@ -301,7 +301,7 @@ func ParseCode(e error) *code.Code {
 		return withCode.ParseCode()
 	}
 
-	return nil
+	return &code.UnknownCode
 }
 
 // Cause returns the underlying cause of the error, if possible.
