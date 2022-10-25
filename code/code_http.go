@@ -51,7 +51,7 @@ func (c *HttpCode) HttpStatus() int { return c.httpStatus }
 
 func (c *HttpCode) Ext() string { return c.ext }
 
-func Load(c *Code) *HttpCode {
+func LoadHttpCode(c *Code) *HttpCode {
 	if v, ok := codeWithHttp.Load(c.Code()); ok {
 		if code, ok := v.(*HttpCode); ok {
 			return code
@@ -61,4 +61,8 @@ func Load(c *Code) *HttpCode {
 	}
 
 	return UnknownHttpCode
+}
+
+func (c *HttpCode) Code() string {
+	return c.c.Code()
 }
