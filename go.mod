@@ -1,4 +1,4 @@
-module base-component
+module github.com/uniquecats/base-component
 
 go 1.17
 

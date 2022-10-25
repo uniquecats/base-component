@@ -93,9 +93,10 @@
 package errors
 
 import (
-	"base-component/code"
 	"fmt"
 	"io"
+
+	"github.com/uniquecats/base-component/code"
 )
 
 // New returns an error with the supplied message.
